@@ -131,11 +131,13 @@
     <ClCompile Include="Racer.cpp" />
     <ClCompile Include="Racing.cpp" />
     <ClCompile Include="Tortoise.cpp" />
+    <ClCompile Include="Wolf.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hare.h" />
     <ClInclude Include="Racer.h" />
     <ClInclude Include="Tortoise.h" />
+    <ClInclude Include="Wolf.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

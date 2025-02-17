@@ -7,10 +7,20 @@
 //
 //}
 
-int Racer::Update()
+int Racer::Update(Racer *racers[])
 {
 	position += StepSize;
 	return position;
+
+}
+
+void Racer::StateCheck(int leader, int thisRacer)
+{
+
+}
+
+void Racer::StunMe()
+{
 
 }
 

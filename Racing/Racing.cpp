@@ -4,7 +4,9 @@
 #include <iostream>
 #include "Racer.h"
 #include "Hare.h"
+#include "Wolf.h"
 #include "Tortoise.h"
+#include <cstdlib>
 
 
 using namespace std;
@@ -26,29 +28,47 @@ int main()
 {
 
     trackLength = 100;
-    Racer *racers[] = { new Hare(trackLength), new Tortoise(trackLength) };
+    Racer *racers[] = { new Hare(trackLength), new Tortoise(trackLength), new Wolf(trackLength)};
     
     bool finished = false;
     int winner = -1;
+    int leadPos = 0;
     
     racerCount = sizeof(racers)/sizeof(*racers);
 
     while (!finished )
-    {
-        DrawTrack(racers);
-        if (!finished && winner >= 0)
-        {
-            cout << racers[winner]->GetName() + " won!";
-        }
-        else
-        {
-            cout << "\nPress enter to continue...";
+    {   
+            cout << "\nPress enter to continue...\n";
+            for (int i = 0; i < racerCount; i++)
+            {
+                racers[i]->StateCheck(winner, i);
+                racers[i]->Update(racers);
+                if (racers[i]->position >= leadPos)
+                {
+                    leadPos = racers[i]->position;
+                    winner = i;
+                }
+            }
+            DrawTrack(racers);
             while (cin.get() != '\n') 
             {
-                
+               
+            }         
+            for (int i = 0; i < racerCount; i++)
+            {
+                if (racers[i]->position >= trackLength)
+                {
+                    finished = true;
+                }
             }
-            
-        }
+    }
+
+    if (finished && winner >= 0)
+    {
+        cout << racers[winner]->GetName() + " won!";
+    }
+    else
+    {
     }
     
     

@@ -1,26 +1,24 @@
 #include "Racer.h"
-#include <cstdlib>
 #include <iostream>
 using namespace std;
 #pragma once
-
-class Hare : public Racer
+class Wolf:public Racer
 {
 private:
-	bool isAsleep;
+	bool isHowled;
 
 public:
-	Hare(int track) : Racer(track)
+	Wolf(int track) : Racer(track)
 	{
-		name = "Hare";
-		symbol = "H";
-		isAsleep = false;
+		name = "Wolf";
+		symbol = "W";		
 		position = 0;
-		stunCounter = 0;
-		StepSize = 3;		
+		StepSize = 1;
+		isHowled = false;
 	};
 	virtual int Update(Racer* racers[]);
 	virtual void StateCheck(int leader, int thisRacer);
-	virtual void StunMe();
+
+
 };
 
