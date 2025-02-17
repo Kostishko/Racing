@@ -127,11 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Hare.cpp" />
     <ClCompile Include="Racer.cpp" />
     <ClCompile Include="Racing.cpp" />
+    <ClCompile Include="Tortoise.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Hare.h" />
     <ClInclude Include="Racer.h" />
+    <ClInclude Include="Tortoise.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

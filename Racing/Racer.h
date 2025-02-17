@@ -4,14 +4,20 @@ using namespace std;
 
 class Racer
 {
-	string name , symbol ;
+protected:
+	
+	int StepSize, trackLength;
 
-	int position , StepSize ;
 
 public:
+	int position;
+	string symbol , name;
 	string GetName();
-	bool Update(bool leading);
-	string Draw();
+	virtual int Update();
+	string Draw();	
+	Racer(int track) : trackLength(track), StepSize(0), position(0)
+	{		
+	};
 
 };
 

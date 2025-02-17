@@ -3,17 +3,35 @@
 
 #include <iostream>
 #include "Racer.h"
+#include "Hare.h"
+#include "Tortoise.h"
+
 
 using namespace std;
 
+#define LeftUpCorner (char)201 
+#define LeftLowCorner (char)200 
+#define Vertical (char)186 
+#define Horizontal (char)205 
+#define RightUpCorner (char)187 
+#define RightLowCorner (char)188
+ 
+
 static void DrawTrack(Racer* racers[]);
+
+int trackLength, racerCount;
+
 
 int main()
 {
-    Racer *racers[] = { new Racer(),new Racer() };
+
+    trackLength = 100;
+    Racer *racers[] = { new Hare(trackLength), new Tortoise(trackLength) };
     
     bool finished = false;
     int winner = -1;
+    
+    racerCount = sizeof(racers)/sizeof(*racers);
 
     while (!finished )
     {
@@ -24,11 +42,12 @@ int main()
         }
         else
         {
-            cout << "Press enter to continue...";
+            cout << "\nPress enter to continue...";
             while (cin.get() != '\n') 
             {
+                
             }
-            cout << "!!!!";
+            
         }
     }
     
@@ -38,7 +57,54 @@ int main()
 static void DrawTrack(Racer* racers[])
 {
     //todo darw the top of the track
+    cout << LeftUpCorner;
+    for (int i = 0; i < trackLength; i++)
+    {
+        cout << Horizontal;
+    }
+    cout << RightUpCorner;
+    cout << "\n";
+    cout << Vertical;
+    for (int i = 0; i < trackLength; i++)
+    {
+        cout << " ";
+    }
+    cout << Vertical;
+    cout << "\n";
+
     //for loop that draws every racer (or call Draw() methofd out of them
+    for (int i = 0; i < racerCount; i++)
+    {
+        cout << Vertical;
+        for (int j = 0; j < trackLength; j++)
+        {
+            if (j == racers[i]->position)
+            {
+                cout << racers[i]->symbol;
+            }
+            else
+            {
+                cout << " ";
+            }
+        }
+        cout << Vertical;
+        cout << "\n";
+        cout << Vertical;
+        for (int j = 0; j < trackLength; j++)
+        {
+            cout << " ";
+        }
+        cout << Vertical;
+        cout << "\n";
+    }
+    
+    cout << LeftLowCorner;
+    for (int j = 0; j < trackLength; j++)
+    {
+        cout << Horizontal;
+    }
+    cout << RightLowCorner;
+    cout << "\n";
     //Draw the bottom of the track 
     
 }

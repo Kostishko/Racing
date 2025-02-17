@@ -1,20 +1,16 @@
 #include "Racer.h"
 
-#define TRACK 50
 
-Racer::Racer()
-{
-	string name = "Deafault Name";
-	string symbol = "D";
+//
+//Racer::Racer(int track)
+//{
+//
+//}
 
-	int position = 0;
-	int StepSize = 0;
-}
-
-bool Racer::Update(bool leading)
+int Racer::Update()
 {
 	position += StepSize;
-	return position >= TRACK;
+	return position;
 
 }
 
@@ -35,7 +31,7 @@ string Racer::Draw()
 	TrackString += symbol;
 
 	//draw the track after the racer position
-	for (int i = position+1; i <= TRACK; i++)
+	for (int i = position+1; i <= trackLength; i++)
 	{
 		TrackString += " ";
 	}
